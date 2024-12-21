@@ -1,13 +1,8 @@
+const audio = document.getElementById('bgMusic');
 function createStars() {
   const starsContainer = document.querySelector('.snow-container');
   const numberOfStars = 100;
-  if (audio.paused) {
-    audio.play();
-    musicBtn.textContent = '🔊';
-  } else {
-    audio.pause();
-    musicBtn.textContent = '🔈';
-  }
+ 
   for (let i = 0; i < numberOfStars; i++) {
     const star = document.createElement('div');
     star.classList.add('star');
@@ -77,7 +72,7 @@ setInterval(createSnow, 200);
 
 // Thêm vào cuối file
 const musicBtn = document.querySelector('.music-toggle');
-const audio = document.getElementById('bgMusic');
+
 
 musicBtn.addEventListener('click', () => {
  
@@ -118,6 +113,10 @@ function createGift() {
 
   gift.addEventListener('click', () => {
     const popup = document.createElement('div');
+    if (audio.paused) {
+      audio.play();
+      musicBtn.textContent = '🔊';
+    }
     popup.classList.add('gift-popup');
     popup.textContent = messages[Math.floor(Math.random() * messages.length)];
     document.body.appendChild(popup);
