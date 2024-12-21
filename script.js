@@ -1,7 +1,13 @@
 function createStars() {
   const starsContainer = document.querySelector('.snow-container');
   const numberOfStars = 100;
-
+  if (audio.paused) {
+    audio.play();
+    musicBtn.textContent = '🔊';
+  } else {
+    audio.pause();
+    musicBtn.textContent = '🔈';
+  }
   for (let i = 0; i < numberOfStars; i++) {
     const star = document.createElement('div');
     star.classList.add('star');
@@ -9,6 +15,7 @@ function createStars() {
     star.style.top = Math.random() * 60 + '%'; // Chỉ ở nửa trên màn hình
     star.style.animationDelay = Math.random() * 2 + 's';
     starsContainer.appendChild(star);
+    
   }
 }
 
@@ -73,13 +80,7 @@ const musicBtn = document.querySelector('.music-toggle');
 const audio = document.getElementById('bgMusic');
 
 musicBtn.addEventListener('click', () => {
-  if (audio.paused) {
-    audio.play();
-    musicBtn.textContent = '🔊';
-  } else {
-    audio.pause();
-    musicBtn.textContent = '🔈';
-  }
+ 
 });
 
 // Thêm hiệu ứng di chuyển cho ông già Noel
